@@ -13,7 +13,7 @@
 <script>
     // initialize Universal Viewer
     var uvOptions = {
-        manifest: {{ page.object_location | relative_url | jsonify }}
+        manifest: {% if page.object_location contains '/' %}{{ page.object_location | jsonify }}{% else %}{{ page.object_location | relative_url | jsonify }}{% endif %}
         // add options here!
     };
     var iiif_viewer = UV.init("uv", uvOptions);
