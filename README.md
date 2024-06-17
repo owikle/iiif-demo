@@ -10,7 +10,7 @@ There is a mix of both cases in this collection.
 In the case of this repository, a demo iiif layout was created (`_layouts/iiif.html`) which includes the Universal Viewer code (`_includes/item/iiif-manifest-universal-viewer.html`).
 Objects then are displayed using Universal Viewer if their display_template value is `iiif`.
 
-Alternately, in `_layouts/image.html` one could swap out `{% raw %}{% include item/image-gallery.html %}{% endraw %}` for `{% raw %}{% include item/iiif-manifest-universal-viewer.html %}{% endraw %}` and all objects with display_template value `image` would be displayed in Universal Viewer, provided that they have a IIIF manifest as their value for object_location.
+Alternately, in `_layouts/image.html` one could swap out `{% include item/image-gallery.html %}` for `{% include item/iiif-manifest-universal-viewer.html %}` and all objects with display_template value `image` would be displayed in Universal Viewer, provided that they have a IIIF manifest as their value for object_location.
 
 ----------
 
