@@ -8,26 +8,18 @@ credits: true
 # Look in _includes/feature for options to easily add features to the page
 ---
 
-{% include feature/jumbotron.html objectid="https://cdil.lib.uidaho.edu/images/palouse_sm.jpg" %} 
+{% include feature/jumbotron.html objectid="objects/PC004934.jpg" %} 
 
-{% include feature/nav-menu.html sections="About CollectionBuilder CSV;About the About Page" %}
+## About CollectionBuilder-CSV and IIIF
 
-## About CollectionBuilder CSV
+This is a CollectionBuilder-CSV template featuring single- and multi-page IIIF objects displayed in Universal Viewer.
 
-This demo collection features items from the University of Idaho Library's [Digital Collections](https://www.lib.uidaho.edu/digital/), and is build using [CollectionBuilder-CSV](https://github.com/CollectionBuilder/collectionbuilder-csv).
+Paths to IIIF manifests can be added to metadata as the value for object_location field.
+Thumbs and smalls can use IIIF Image API values or other paths to thumb and small objects within or outside the repository.
+object_location can either include links to json manifest files that are hosted outside the repository (sometimes can cause CORS issues), or the manifest files can be downloaded and placed in the CB repo's objects folder and their paths used for object_location values.
+There is a mix of both cases in this collection.
 
-CollectionBuilder-CSV is a "Stand Alone" template for creating digital collection and exhibit websites using Jekyll, given:
+In the case of this repository, a demo iiif layout was created (`_layouts/iiif.html`) which includes the Universal Viewer code (`_includes/item/iiif-manifest-universal-viewer.html`).
+Objects then are displayed using Universal Viewer if their display_template value is `iiif`.
 
-- a CSV of collection metadata
-- a folder of images, PDFs, audio, or video files
-
-Driven by your collection metadata, the template generates engaging visualizations to browse and explore your objects.
-The resulting static site can be hosted on any basic web server.
-
-[CollectionBuilder](https://github.com/CollectionBuilder/) is an set of open source tools for creating digital collection and exhibit websites that are driven by metadata and powered by modern static web technology.
-See [CB Docs](https://collectionbuilder.github.io/cb-docs/) for detailed information.
-
-{% include feature/image.html objectid="demo_001" width="75" %} 
-
-<!-- IMPORTANT!!! DELETE this comment and the include below when you are finished editing this page for your collection. The include below introduces about page features. They will show up on your collection's about page until you delete it.  -->
-{% include cb/about_the_about.md %} 
+Alternately, in `_layouts/image.html` one could swap out `{% raw %}{% include item/image-gallery.html %}{% endraw %}` for `{% raw %}{% include item/iiif-manifest-universal-viewer.html %}{% endraw %}` and all objects with display_template value `image` would be displayed in Universal Viewer, provided that they have a IIIF manifest as their value for object_location.
