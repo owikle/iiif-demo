@@ -1,23 +1,16 @@
-# CollectionBuilder-CSV
+# CollectionBuilder-CSV and IIIF
 
-CollectionBuilder-CSV is a robust and flexible "stand alone" template for creating digital collection and exhibit websites using Jekyll and a metadata CSV.
-Driven by your collection metadata, the template generates engaging visualizations to browse and explore your objects.
-The resulting static site can be hosted on any basic web server (or built automatically using GitHub Actions).
+This is a CollectionBuilder-CSV template featuring single- and multi-page IIIF objects displayed in Universal Viewer.
 
-Visit the [CollectionBuilder Docs](https://collectionbuilder.github.io/cb-docs/) for step-by-step details for getting started and building collections!
+Paths to IIIF manifests can be added to metadata as the value for object_location field.
+Thumbs and smalls can use IIIF Image API values or other paths to thumb and small objects within or outside the repository.
+object_location can either include links to json manifest files that are hosted outside the repository (sometimes can cause CORS issues), or the manifest files can be downloaded and placed in the CB repo's objects folder and their paths used for object_location values.
+There is a mix of both cases in this collection.
 
-## Brief Overview of Building a Collection
+In the case of this repository, a demo iiif layout was created (`_layouts/iiif.html`) which includes the Universal Viewer code (`_includes/item/iiif-manifest-universal-viewer.html`).
+Objects then are displayed using Universal Viewer if their display_template value is `iiif`.
 
-The [CollectionBuilder Docs](https://collectionbuilder.github.io/cb-docs/) contain detailed information about building a collection from start to finish--including installing software, using Git/GitHub, preparing digital objects, and formatting metadata.
-However, here is a super quick overview of the process:
-
-- Make your own copy of this template repository by clicking the green "Use this Template" button on GitHub (see [repository set up docs](https://collectionbuilder.github.io/cb-docs/docs/repository/)). This copy of the template is the starting point for your "project repository", i.e. the source code for your digital collection site!
-- Prepare your collection metadata following the CB-CSV template (see our demo [metadata template on Google Sheets](https://docs.google.com/spreadsheets/d/1nN_k4JQB4LJraIzns7WcM3OXK-xxGMQhW1shMssflNM/edit?usp=sharing) and [metadata docs](https://collectionbuilder.github.io/cb-docs/docs/metadata/csv_metadata/)). Your metadata will include links to your digital files (images, pdfs, videos, etc) and thumbnails wherever they are hosted.
-- Add your metadata as a CSV to your project repository's "_data" folder (see [upload metadata docs](https://collectionbuilder.github.io/cb-docs/docs/metadata/uploading/)).
-- Edit your project's "_config.yml" with your collection information (see [site configuration docs](https://collectionbuilder.github.io/cb-docs/docs/config/)). Additional customization is done via a theme file, configuration files, CSS tweaks, and more--however, once your "_config.yml" is edited your site is ready to be previewed. 
-- Generate your site using Jekyll! (see docs for how to [use Jekyll locally](https://collectionbuilder.github.io/cb-docs/docs/repository/generate/) and [deploy on the web](https://collectionbuilder.github.io/cb-docs/docs/deploy/))
-
-Please feel free to ask questions in the main [CollectionBuilder discussion forum](https://github.com/CollectionBuilder/collectionbuilder.github.io/discussions).
+Alternately, in `_layouts/image.html` one could swap out `{% raw %}{% include item/image-gallery.html %}{% endraw %}` for `{% raw %}{% include item/iiif-manifest-universal-viewer.html %}{% endraw %}` and all objects with display_template value `image` would be displayed in Universal Viewer, provided that they have a IIIF manifest as their value for object_location.
 
 ----------
 
