@@ -12,7 +12,7 @@ url: https://owikle.github.io
 # path to location on the domain if necessary e.g. /digital/hjccc
 baseurl: /iiif-demo
 # location of code, the full url to your github repository
-source-code: https://github.com/CollectionBuilder/collectionbuilder-csv
+source-code: https://github.com/owikle/iiif-demo
 
 ##########
 # SITE SETTINGS
